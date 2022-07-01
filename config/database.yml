@@ -24,6 +24,8 @@ default: &default
 development:
   <<: *default
   database: odin_facebook_development
+  username: <%= Rails.application.credentials.dig(:development, :postgres_username) %>
+  password: <%= Rails.application.credentials.dig(:development, :postgres_password) %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -58,6 +60,8 @@ development:
 test:
   <<: *default
   database: odin_facebook_test
+  username: <%= Rails.application.credentials.dig(:test, :postgres_username) %>
+  password: <%= Rails.application.credentials.dig(:test, :postgres_password) %>
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
